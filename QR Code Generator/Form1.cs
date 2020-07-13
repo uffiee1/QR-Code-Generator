@@ -16,5 +16,13 @@ namespace QR_Code_Generator
         {
             InitializeComponent();
         }
+
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            QRCoder.QRCodeGenerator QG = new QRCoder.QRCodeGenerator();
+            var MyData = QG.CreateQrCode(txbxGenerate.Text, QRCoder.QRCodeGenerator.ECCLevel.H);
+            var code = new QRCoder.QRCode(MyData);
+            pictureBox1.Image = code.GetGraphic(50);
+        }
     }
 }
